@@ -1,0 +1,10 @@
+#!/usr/bin/gmake -srRf
+
+DEFAULT: help
+
+repo-dir							=	$(shell dirname $(shell readlink -fn $(firstword $(MAKEFILE_LIST))))
+
+
+reorg-content:
+	echo "INFO:  Hello world."
+	

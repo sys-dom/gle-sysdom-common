@@ -1,0 +1,4 @@
+[Project]
+Manager=KDevGenericManager
+Name=gle-sysdom-common
+VersionControl=kdevgit
