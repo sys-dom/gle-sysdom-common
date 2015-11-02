@@ -2,9 +2,23 @@
 
 DEFAULT: help
 
-repo-dir							=	$(shell dirname $(shell readlink -fn $(firstword $(MAKEFILE_LIST))))
+gle-sysdom-common-dir				=	$(shell dirname $(shell readlink -fn $(firstword $(MAKEFILE_LIST))))
+gle-devel-dir						=	$(shell dirname $(gle-sysdom-common-dir))
 
+gle-cmd-opts						=	--no-auto-compile -L $(gle-sysdom-common-dir)/lib 
+gle-test-script-filesystem			=	$(gle-sysdom-common-dir)/tst/filesystem.scm
 
-reorg-content:
-	echo "INFO:  Hello world."
-	
+ggspec-path							=	$(shell which ggspec)
+
+init:
+	echo "INFO:  gle-devel-dir                      = $(gle-devel-dir)"
+	echo "INFO:  gle-sysdom-common-dir              = $(gle-sysdom-common-dir)"
+	echo "INFO:  gle-sysdom-common-dir              = $(gle-sysdom-common-dir)"
+	echo "INFO:  gle-test-script-filesystem         = $(gle-test-script-filesystem)"
+	echo "INFO:  ggspec-path                        = $(ggspec-path)"
+	[ -x "$(ggspec-path)" ] || (echo "ERROR:  ggspec command was not found on the path.  Please setup 'ggspec' and try again."  && exit 1)
+	echo
+
+test-filesystem: init
+	GUILE_WARN_DEPRECATED=no  guile $(gle-cmd-opts) -e test -s $(gle-test-script-filesystem) 
+	echo
