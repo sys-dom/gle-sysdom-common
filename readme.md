@@ -4,15 +4,15 @@ This project contains common Guile script definitions and functions.
 
 # Requirements
 
-The project depends on #ggspec# for running unit tests.
+The project depends on `ggspec1` for running unit tests.
 
 # Usage
 
-Use the provided Makefile #process.gmake# as follows:
+Use the provided Makefile `process.gmake` as follows:
 
-<pre>
+```bash
 gmake -srRf process.gmake test-filesystem
-</pre>
+```
 
 #  License & Copyright
 
